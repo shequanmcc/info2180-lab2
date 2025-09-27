@@ -1,0 +1,123 @@
+body {
+  font-size: 18px;
+  color: #2D3748;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "main   aside"
+    "footer footer";
+  gap: 1.5rem;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.hero { grid-area: header; }
+main  { grid-area: main; }
+aside { grid-area: aside; }
+footer{ grid-area: footer; }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .5rem;
+  background: #63B3ED;
+  color: #FFFFFF;
+  padding: 3.5rem 1rem;
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.hero h1 {
+  margin: .25rem 0 0;
+  font-size: 36px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.hero p { margin: 0; color: #FFFFFF; }
+
+.hero .avatar {
+  width: clamp(80px, 10vw, 110px);
+  height: clamp(80px, 10vw, 110px);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 6px solid #fbbf24;
+  margin-bottom: .25rem;
+}
+
+.post h2 {
+  font-size: 32px;
+  color: #48BB78;
+}
+
+.post .meta {
+  color: #718096;
+}
+
+aside h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 0;
+}
+
+aside h3.about-title { color: #000000; }
+aside h3.section-title { color: #48BB78; }
+
+.about-box {
+  background: #E2E8F0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.social-links a,
+.archives a {
+  color: #4299E1;
+  text-decoration: none;
+}
+
+.social-links a:hover,
+.archives a:hover { text-decoration: underline; }
+
+footer {
+  background: #2C5282;
+  color: #FFFFFF;
+  padding: 1rem 0 0.5rem 0;
+  border-top: none;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+  }
+}
+/* post images: size + float + clearfix */
+.post-img{
+  width:220px;      /* shrink big photos */
+  height:auto;      /* keep aspect ratio */
+  display:block;
+  margin:.25rem 0 .5rem 0; /* base spacing; side gaps added by floats */
+}
+
+.float-left{ float:left;  margin-right:1rem; }
+.float-right{ float:right; margin-left:1rem; }
+
+.post::after{
+  content:"";
+  display:block;
+  clear:both;       /* ensures the article wraps around its floated image */
+}
